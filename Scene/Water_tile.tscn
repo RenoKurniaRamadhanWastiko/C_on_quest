@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://Assets/Shader/Water_tile_material.shd" type="Shader" id=1]
+[ext_resource path="res://Assets/Terrain and Building/image4493.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Terrain and Building/image4519.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Terrain and Building/image4521.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Terrain and Building/image4523.png" type="Texture" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+shader/shader = ExtResource( 1 )
+shader/shading_mode = 0
+shader_param/p1 = ExtResource( 2 )
+shader_param/p2 = ExtResource( 3 )
+shader_param/p3 = ExtResource( 4 )
+shader_param/p4 = ExtResource( 5 )
+shader_param/speed = 1.0
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = ExtResource( 1 )
+shader/shading_mode = 0
+shader_param/speed = 1.0
+
+[node name="Water_tile" type="Node2D"]
+
+material/material = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+material/material = SubResource( 2 )
+transform/scale = Vector2( 0.135593, 0.135593 )
+texture = ExtResource( 2 )
+centered = false
+
+

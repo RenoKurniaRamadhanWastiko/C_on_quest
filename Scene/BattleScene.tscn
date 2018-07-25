@@ -1,0 +1,782 @@
+[gd_scene load_steps=22 format=1]
+
+[ext_resource path="res://Scene/BattleScene.gd" type="Script" id=1]
+[ext_resource path="res://Assets/UI_KIT/Background by ansimuz.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI_KIT/Worn-Parchment-BG-1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI_KIT/Box2-Selected.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Character/PNG/Dog-Sprite-by-Open-Pixel-Project.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Character/PNG/Druid-Sprite-by-Open-Pixel-Project.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Character/PNG/Modified-Yeti-Sasquatch-by-Open-Pixel-Project.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Character/PNG/Nerd-Sprite-by-Open-Pixel-Project.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Character/PNG/Skeleton-Sprite-by-Open-Pixel-Project.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Character/PNG/Wise-woman-sprite-by-open-pixel-project.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Object and Misc/objects.png" type="Texture" id=11]
+[ext_resource path="res://Assets/font/Lady_radical.fnt" type="BitmapFont" id=12]
+[ext_resource path="res://addons/GodotTIE/text_interface_engine.gd" type="Script" id=13]
+[ext_resource path="res://addons/GodotTIE/GodotTIE_icon.png" type="Texture" id=14]
+[ext_resource path="res://Assets/UI_KIT/Parchment-Scroll-Opaque.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Polygon2D/Enemy:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -21.7663 ), Vector2( -27.9999, -21.7666 ), Vector2( 55.9998, -21.7666 ), Vector2( 0, -21.7666 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attacked:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.25, 0.75, 0.25, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "defeat"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enter_scene:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0.8, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Game_over:visibility/visible")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Game_over1:visibility/visible")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rply:visibility/visible")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("con_btn:visibility/visible")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0.8 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "enter"
+length = 0.3
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enter_scene:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "exit"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enter_scene:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 1.8, 2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="BattleScene" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 512, 304 )
+transform/scale = Vector2( 2.13212, 1.89408 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 512, 304 )
+transform/scale = Vector2( 2.13212, 1.84424 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 523, 474.277 )
+transform/scale = Vector2( 3.02848, 2.59766 )
+texture = ExtResource( 4 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 528, 262.649 )
+transform/scale = Vector2( 1.14286, 1.04054 )
+polygon = Vector2Array( -288, -144, -288, 112, 288, 112, 288, -144 )
+uv = Vector2Array(  )
+color = Color( 0.0195313, 0.0192261, 0.0192261, 1 )
+vertex_colors = ColorArray( 0.402344, 0.402344, 0.402344, 1, 0.015625, 0.0151367, 0.0151367, 1 )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Enemy" type="AnimatedSprite" parent="Polygon2D"]
+
+transform/pos = Vector2( 0, -21.7666 )
+transform/scale = Vector2( 2.26471, 2.32979 )
+frames = SubResource( 1 )
+animation = "default"
+
+[node name="InfoBoard" type="Sprite" parent="."]
+
+transform/pos = Vector2( 523.94, 352 )
+transform/scale = Vector2( 6.03492, 1.93939 )
+texture = ExtResource( 4 )
+
+[node name="Combat_info" type="Control" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 510.359
+margin/top = 459.445
+margin/right = 550.359
+margin/bottom = 499.445
+
+[node name="Player" type="Sprite" parent="Combat_info"]
+
+transform/pos = Vector2( 177.641, -59.4455 )
+transform/scale = Vector2( 4.29268, 2.8 )
+texture = ExtResource( 11 )
+centered = false
+region = true
+region_rect = Rect2( 148, 227.818, 41, 40 )
+
+[node name="Enemy" type="Sprite" parent="Combat_info"]
+
+transform/pos = Vector2( -318.359, -59.4455 )
+transform/scale = Vector2( 4.29268, 2.8 )
+texture = ExtResource( 11 )
+centered = false
+region = true
+region_rect = Rect2( 148, 227.818, 41, 40 )
+
+[node name="Label1" type="Label" parent="Combat_info"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -30.0
+margin/top = -75.0
+margin/right = 15.0
+margin/bottom = -54.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Spell :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label2" type="Label" parent="Combat_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 242.0
+margin/top = -59.0
+margin/right = 293.0
+margin/bottom = -38.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Player :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label3" type="Label" parent="Combat_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -254.0
+margin/top = -59.0
+margin/right = -209.0
+margin/bottom = -38.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Enemy :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Player_info" type="Control" parent="Combat_info"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="Damage" type="Label" parent="Combat_info/Player_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 194.0
+margin/top = -27.0
+margin/right = 258.0
+margin/bottom = -13.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage  :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Damage_fill" type="Label" parent="Combat_info/Player_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 265.0
+margin/top = -27.0
+margin/right = 329.0
+margin/bottom = -13.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N/A"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Speed" type="Label" parent="Combat_info/Player_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 194.0
+margin/top = -11.0
+margin/right = 257.0
+margin/bottom = 3.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Speed     :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Speed_fill" type="Label" parent="Combat_info/Player_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 265.0
+margin/top = -11.0
+margin/right = 328.0
+margin/bottom = 3.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N/A"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Health" type="Label" parent="Combat_info/Player_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 194.0
+margin/top = 5.0
+margin/right = 246.0
+margin/bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Health    :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Health_fill" type="Label" parent="Combat_info/Player_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 265.0
+margin/top = 5.0
+margin/right = 327.0
+margin/bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N/A"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Enemy_info" type="Control" parent="Combat_info"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="Damage" type="Label" parent="Combat_info/Enemy_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -302.0
+margin/top = -27.0
+margin/right = -238.0
+margin/bottom = -13.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage  :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Damage_fill" type="Label" parent="Combat_info/Enemy_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -231.0
+margin/top = -27.0
+margin/right = -167.0
+margin/bottom = -13.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N/A"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Speed" type="Label" parent="Combat_info/Enemy_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -302.0
+margin/top = -11.0
+margin/right = -239.0
+margin/bottom = 3.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Speed     :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Speed_fill" type="Label" parent="Combat_info/Enemy_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -231.0
+margin/top = -11.0
+margin/right = -168.0
+margin/bottom = 3.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N/A"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Health" type="Label" parent="Combat_info/Enemy_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -302.0
+margin/top = 5.0
+margin/right = -240.0
+margin/bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Health    :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Health_fill" type="Label" parent="Combat_info/Enemy_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -231.0
+margin/top = 5.0
+margin/right = -169.0
+margin/bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "N/A"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Answer_btn" type="Control" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 512.0
+margin/top = 480.0
+margin/right = 551.0
+margin/bottom = 518.0
+
+[node name="Answer1" type="Button" parent="Answer_btn"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -112.0
+margin/top = -48.0
+margin/right = -32.0
+margin/bottom = -17.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Answer1"
+flat = true
+
+[node name="Answer2" type="Button" parent="Answer_btn"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -112.0
+margin/top = 0.0
+margin/right = -32.0
+margin/bottom = 31.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Answer 2"
+flat = true
+
+[node name="Answer3" type="Button" parent="Answer_btn"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 48.0
+margin/top = -48.0
+margin/right = 128.0
+margin/bottom = -17.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Answer 3"
+flat = true
+
+[node name="Answer4" type="Button" parent="Answer_btn"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 48.0
+margin/top = 0.0
+margin/right = 128.0
+margin/bottom = 31.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Answer 4"
+flat = true
+
+[node name="TIE" type="ReferenceFrame" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 224.0
+margin/top = 320.0
+margin/right = 818.0
+margin/bottom = 368.0
+script/script = ExtResource( 13 )
+__meta__ = {
+"_editor_icon": ExtResource( 14 )
+}
+SCROLL_ON_MAX_LINES = true
+BREAK_ON_MAX_LINES = true
+AUTO_SKIP_WORDS = true
+LOG_SKIPPED_LINES = true
+SCROLL_SKIPPED_LINES = false
+FONT = ExtResource( 12 )
+PRINT_INPUT = true
+BLINKING_INPUT = true
+INPUT_CHARACTERS_LIMIT = -1
+
+[node name="con_btn" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 736.0
+margin/top = 352.0
+margin/right = 809.0
+margin/bottom = 380.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Continue"
+flat = true
+clip_text = true
+
+[node name="End_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+[node name="Enemy_info" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 528, 96.5 )
+transform/scale = Vector2( 1.26061, 1.38889 )
+texture = ExtResource( 15 )
+
+[node name="name" type="Label" parent="Enemy_info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -127.0
+margin/top = -12.0
+margin/right = 114.0
+margin/bottom = 22.0
+custom_fonts/font = ExtResource( 12 )
+text = "Uraga The Code Dweller"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Attacked" type="Polygon2D" parent="."]
+
+visibility/opacity = 0.0
+transform/pos = Vector2( 528, 240 )
+transform/scale = Vector2( 2.58825, 2.42424 )
+polygon = Vector2Array( -129.818, -52.8001, -129.818, 59.4001, -123.636, 59.4001, 129.818, 59.4001, 129.818, -52.8001 )
+uv = Vector2Array(  )
+color = Color( 0.960938, 0.0375366, 0.0375366, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/attack = SubResource( 2 )
+anims/attacked = SubResource( 3 )
+anims/defeat = SubResource( 6 )
+anims/enter = SubResource( 4 )
+anims/exit = SubResource( 5 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Enter_scene" type="Polygon2D" parent="."]
+
+visibility/opacity = 0.0
+transform/pos = Vector2( 528, 240 )
+transform/scale = Vector2( 2.58825, 2.42424 )
+polygon = Vector2Array( -203.999, -99.0001, -203.999, 151.8, 191.636, 151.8, 191.636, -99.0001 )
+uv = Vector2Array(  )
+color = Color( 0.0117188, 0.0111237, 0.0111237, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Enter_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Game_over" type="Label" parent="."]
+
+visibility/visible = false
+rect/scale = Vector2( 5, 5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 336.0
+margin/top = 176.0
+margin/right = 417.0
+margin/bottom = 197.0
+custom_fonts/font = ExtResource( 12 )
+text = "Game Over!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Game_over1" type="Label" parent="."]
+
+visibility/visible = false
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 448.0
+margin/top = 272.0
+margin/right = 529.0
+margin/bottom = 293.0
+custom_fonts/font = ExtResource( 12 )
+text = "Game Over!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="rply" type="Button" parent="."]
+
+visibility/visible = false
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 480.0
+margin/top = 352.0
+margin/right = 525.0
+margin/bottom = 372.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Retry"
+flat = false
+
+[connection signal="pressed" from="Answer_btn/Answer1" to="." method="_on_Answer1_pressed"]
+
+[connection signal="pressed" from="Answer_btn/Answer2" to="." method="_on_Answer2_pressed"]
+
+[connection signal="pressed" from="Answer_btn/Answer3" to="." method="_on_Answer3_pressed"]
+
+[connection signal="pressed" from="Answer_btn/Answer4" to="." method="_on_Answer4_pressed"]
+
+[connection signal="pressed" from="con_btn" to="." method="_on_con_btn_pressed"]
+
+[connection signal="timeout" from="End_timer" to="." method="_on_End_timer_timeout"]
+
+[connection signal="timeout" from="Enter_timer" to="." method="_on_Enter_timer_timeout"]
+
+[connection signal="pressed" from="rply" to="." method="_on_rply_pressed"]
+
+

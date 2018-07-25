@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/font/liliput_steps_72.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Script/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Object and Misc/objects.png" type="Texture" id=4]
+[ext_resource path="res://Assets/font/Lady_radical.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://exp_bar.gd" type="Script" id=6]
+
+[node name="Character_UI" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+
+[node name="Player_name" type="Label" parent="Player"]
+
+rect/scale = Vector2( 0.15, 0.15 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -19.0
+margin/top = 8.0
+margin/right = 241.0
+margin/bottom = 153.0
+custom_fonts/font = ExtResource( 2 )
+text = "NOOOB
+"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = 0
+
+[node name="Camera" type="Camera2D" parent="."]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = false
+drag_margin/v_enabled = false
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+script/script = ExtResource( 3 )
+
+[node name="GUI" type="Control" parent="Camera"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="Main_bar" type="Sprite" parent="Camera/GUI"]
+
+transform/pos = Vector2( -216.963, -125.717 )
+texture = ExtResource( 4 )
+vframes = 7
+hframes = 7
+frame = 35
+
+[node name="Score_bar" type="Sprite" parent="Camera/GUI"]
+
+editor/display_folded = true
+transform/pos = Vector2( -221.841, -90.1643 )
+transform/scale = Vector2( 0.964869, 1.00821 )
+texture = ExtResource( 4 )
+vframes = 8
+hframes = 8
+frame = 57
+
+[node name="Label" type="Label" parent="Camera/GUI/Score_bar"]
+
+rect/scale = Vector2( 0.75, 0.75 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -8.0
+margin/top = -3.0
+margin/right = 32.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 5 )
+text = "Score"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EXP_bar" type="Sprite" parent="Camera/GUI"]
+
+transform/pos = Vector2( -205.5, -110 )
+transform/scale = Vector2( 0.944444, 1 )
+texture = ExtResource( 4 )
+region = true
+region_rect = Rect2( 6.538, 291.864, 54.5, 14.5 )
+script/script = ExtResource( 6 )
+
+

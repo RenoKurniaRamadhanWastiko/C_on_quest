@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Assets/Terrain and Building/Overworld.png" type="Texture" id=1]
+
+[node name="node" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+vframes = 36
+hframes = 40
+frame = 32
+region_rect = Rect2( 440.651, 54.3638, 1.5, 0.5 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 64, 0 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 36
+hframes = 40
+frame = 118
+region_rect = Rect2( 440.651, 54.3638, 1.5, 0.5 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 0 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 36
+hframes = 40
+frame = 117
+region_rect = Rect2( 440.651, 54.3638, 1.5, 0.5 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 36
+hframes = 40
+frame = 67
+region_rect = Rect2( 440.651, 54.3638, 1.5, 0.5 )
+
+
